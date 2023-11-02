@@ -10,31 +10,45 @@
     </head>
     <body>
         <div class="container mt-5">
-        <h1 class="text-center text-warning">Lista de Empleados</h1>
-        <table border="1" class="table table-bordered table-striped mt-3">
-            <tr>
-                <td>Id</td>
-                <td>Nombre</td>
-                <td>Departamento</td>
-                <td>Accion</td>
-            </tr>
-            <c:forEach var="empleado" items="${lista}">
+            <a class="btn btn-warning" href="EmpleadoController?opcion=crear">Crear un Producto</a>
+            <h1 class="text-center text-warning">Lista de Productos</h1>
+            <table border="1" class="table table-bordered table-striped mt-3">
                 <tr>
-                    <td>
-                        <a class="btn btn-warning" href="EmpleadoController?opcion=editar&id=<c:out value="${empleado.id}"></c:out>">
-                            <c:out value="${empleado.id}"></c:out>
-                            </a>
-                        </td>
+                    <td>Codigo</td>
+                    <td>Producto</td>
+                    <td>Marca</td>
+                    <td>Precio</td>
+                    <td>Stock</td>
+                    <td>Vendidos</td>
+                    <td>Acción</td>
+                </tr>
+                <c:forEach var="empleado" items="${lista}">
+                    <tr>
+                        <td><c:out value="${empleado.id}"></c:out></td>
+                        
                         <td><c:out value="${empleado.nombre}"></c:out></td>
-                    <td><c:out value="${empleado.departamento}"></c:out></td>
+                        
+                        <td><c:out value="${empleado.departamento}"></c:out></td>
+
+                        <td><c:out value="${empleado.precio}"></c:out></td>
+
+                        <td><c:out value="${empleado.stock}"></c:out></td>
+                        
+                        <td><c:out value="${empleado.vendidos}"></c:out></td>
+
+                        
                         <td>
                             <a class="btn btn-danger" href="EmpleadoController?opcion=eliminar&id=<c:out value="${empleado.id}"></c:out>">
                                 Eliminar
+                            </a>
+
+                            <a class="btn btn-warning" href="EmpleadoController?opcion=editar&id=<c:out value="${empleado.id}"></c:out>">
+                                Editar
                             </a>
                         </td>
                     </tr>
             </c:forEach>
         </table>
-        </div>
-    </body>
+    </div>
+</body>
 </html>

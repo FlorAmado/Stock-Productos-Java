@@ -19,17 +19,22 @@ public class EmpleadoDAOImpl implements EmpleadoDAO {
         return Conexion.getConnection();
     }
 
+    @Override
     public boolean guardar(Empleado empleado) {
         String sql = null;
         estadoOperacion = false;
         try {
             connection = obtenerConexion();
             connection.setAutoCommit(false);
-            sql = "INSERT INTO empleados (id, nombre, departamento) VALUES (?, ?, ?)";
+            sql = "INSERT INTO empleados (id, nombre, departamento, precio, stock, vendidos) VALUES (?, ?, ?, ?, ?, ?)";
             statement = connection.prepareStatement(sql);
             statement.setInt(1, empleado.getId());
             statement.setString(2, empleado.getNombre());
             statement.setString(3, empleado.getDepartamento());
+            statement.setInt(4, empleado.getPrecio());
+            statement.setInt(5, empleado.getStock());
+            statement.setInt(6, empleado.getVendidos());
+
             estadoOperacion = statement.executeUpdate() > 0;
             connection.commit();
             statement.close();
@@ -45,17 +50,21 @@ public class EmpleadoDAOImpl implements EmpleadoDAO {
         return estadoOperacion;
     }
 
+    @Override
     public boolean editar(Empleado empleado) {
         String sql = null;
         estadoOperacion = false;
         try {
             connection = obtenerConexion();
             connection.setAutoCommit(false);
-            sql = "UPDATE empleados SET nombre=?, departamento=? WHERE id=?";
+            sql = "UPDATE empleados SET nombre=?, departamento=?, precio=?, stock=?, vendidos=? WHERE id=?";
             statement = connection.prepareStatement(sql);
             statement.setString(1, empleado.getNombre());
             statement.setString(2, empleado.getDepartamento());
-            statement.setInt(3, empleado.getId());
+            statement.setInt(3, empleado.getPrecio());
+            statement.setInt(4, empleado.getStock());
+            statement.setInt(5, empleado.getVendidos());
+            statement.setInt(6, empleado.getId());
             estadoOperacion = statement.executeUpdate() > 0;
             connection.commit();
             statement.close();
@@ -71,6 +80,12 @@ public class EmpleadoDAOImpl implements EmpleadoDAO {
         return estadoOperacion;
     }
 
+    /**
+     *
+     * @param idEmpleado
+     * @return
+     */
+    @Override
     public boolean eliminar(int idEmpleado) {
         String sql = null;
         estadoOperacion = false;
@@ -95,6 +110,7 @@ public class EmpleadoDAOImpl implements EmpleadoDAO {
         return estadoOperacion;
     }
 
+    @Override
     public List<Empleado> obtenerEmpleados() {
         ResultSet resultSet = null;
         List<Empleado> listaEmpleados = new ArrayList<>();
@@ -110,6 +126,9 @@ public class EmpleadoDAOImpl implements EmpleadoDAO {
                 e.setId(resultSet.getInt(1));
                 e.setNombre(resultSet.getString(2));
                 e.setDepartamento(resultSet.getString(3));
+                e.setPrecio(resultSet.getInt(4));
+                e.setStock(resultSet.getInt(5));
+                e.setVendidos(resultSet.getInt(6));
                 listaEmpleados.add(e);
             }
             statement.close();
@@ -120,6 +139,7 @@ public class EmpleadoDAOImpl implements EmpleadoDAO {
         return listaEmpleados;
     }
 
+    @Override
     public Empleado obtenerEmpleado(int idEmpleado) {
         ResultSet resultSet = null;
         Empleado emp = new Empleado();
@@ -135,6 +155,9 @@ public class EmpleadoDAOImpl implements EmpleadoDAO {
                 emp.setId(resultSet.getInt(1));
                 emp.setNombre(resultSet.getString(2));
                 emp.setDepartamento(resultSet.getString(3));
+                emp.setPrecio(resultSet.getInt(4));
+                emp.setStock(resultSet.getInt(5));
+                emp.setVendidos(resultSet.getInt(6));
             }
             statement.close();
             connection.close();
