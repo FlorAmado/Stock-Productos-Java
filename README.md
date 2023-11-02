@@ -12,3 +12,6 @@
 - Listado de Productos
 - Destacar Productos
 - Eliminar Productos
+
+![image](https://github.com/FlorAmado/Stock-Productos-Java/assets/118026672/4fe5d363-1d19-478a-a73e-481784291749)
+
