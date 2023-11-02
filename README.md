@@ -10,5 +10,5 @@
 - Creación de Productos
 - Edición de Productos
 - Listado de Productos
-- Desctacar Productos
+- Destacar Productos
 - Eliminar Productos
