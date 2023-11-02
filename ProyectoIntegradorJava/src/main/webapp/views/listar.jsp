@@ -37,14 +37,17 @@
                         <td><c:out value="${empleado.vendidos}"></c:out></td>
 
                         
-                        <td>
+                        <td class="text-center">
+                            <a class="btn btn-outline-dark" href="EmpleadoController?opcion=editar&id=<c:out value="${empleado.id}"></c:out>">
+                                Destacar
+                            </a>
+                            <a class="btn btn-warning" href="EmpleadoController?opcion=editar&id=<c:out value="${empleado.id}"></c:out>">
+                                Editar
+                            </a>
                             <a class="btn btn-danger" href="EmpleadoController?opcion=eliminar&id=<c:out value="${empleado.id}"></c:out>">
                                 Eliminar
                             </a>
 
-                            <a class="btn btn-warning" href="EmpleadoController?opcion=editar&id=<c:out value="${empleado.id}"></c:out>">
-                                Editar
-                            </a>
                         </td>
                     </tr>
             </c:forEach>
