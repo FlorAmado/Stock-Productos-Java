@@ -11,7 +11,7 @@
 </head>
 <body>
     <div class="container mt-5">
-        <h1 class="text-center text-warning">Editar Producto</h1>
+        <h1 class="text-center text-success">Editar Producto</h1>
         <form action="EmpleadoController" method="post">
             <c:set var="empleado" value="${empleado}"></c:set>
             <input type="hidden" name="opcion" value="editar">
@@ -40,7 +40,7 @@
                 </tr>
                 
             </table>
-            <button class="btn btn-warning yellow-bg" type="submit">Guardar</button>
+            <button class="btn btn-success green-bg" type="submit">Guardar</button>
         </form>
     </div>
 </body>

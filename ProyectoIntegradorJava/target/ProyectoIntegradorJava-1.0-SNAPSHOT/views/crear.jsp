@@ -6,7 +6,7 @@
 </head>
 <body>
     <div class="container mt-5">
-        <h1 class="text-center text-warning">Crear Producto</h1>
+        <h1 class="text-center text-success">Crear Producto</h1>
         <form action="EmpleadoController" method="post">
             <input type="hidden" name="opcion" value="guardar">
             <table class="table table-bordered mt-3">
@@ -32,7 +32,7 @@
                     <td><input type="text" name="vendidos" class="form-control" size="50"></td>
                 </tr>
             </table>
-            <button class="btn btn-warning" type="submit">Guardar</button>
+            <button class="btn btn-success" type="submit">Guardar</button>
         </form>
     </div>
 </body>

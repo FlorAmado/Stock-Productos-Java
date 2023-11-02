@@ -6,13 +6,15 @@
     </head>
 <body>
     <div class="container mt-5 ">
-        <h1 class="text-center text-warning">Menu de opciones Productos</h1>
+        <h1 class="text-center text-success">Menu de opciones Productos</h1>
         
               <div class="text-center">
               
-              <a class="btn btn-warning" href="EmpleadoController?opcion=crear">Crear un Producto</a>
+              <a class="btn btn-success" href="EmpleadoController?opcion=crear">Crear un Producto</a>
             
-              <a class="btn btn-warning" href="EmpleadoController?opcion=listar">Lista de Productos</a>
+              <a class="btn btn-success" href="EmpleadoController?opcion=listar">Lista de Productos</a>
+              
+              <a class="btn btn-success" href="EmpleadoController?opcion=listar">Lista de Destacados</a>
             
               </div>  
     </div>

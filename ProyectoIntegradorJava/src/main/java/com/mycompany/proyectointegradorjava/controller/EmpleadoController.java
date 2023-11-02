@@ -61,6 +61,14 @@ public class EmpleadoController extends HttpServlet {
                     response.sendRedirect(request.getContextPath() + "/index.jsp");
                     break;
                 }
+            /*case "destacar":
+                {
+                    int id = Integer.parseInt(request.getParameter("id"));
+                    empleadoDAO.destacar(id);
+                    System.out.println("Registro destacado satisfactoriamente...");
+                    response.sendRedirect(request.getContextPath() + "/index.jsp");
+                    break;
+                }*/
             default:
                 break;
         }
@@ -83,6 +91,10 @@ public class EmpleadoController extends HttpServlet {
             empleado.setId(Integer.parseInt(request.getParameter("id")));
             empleado.setNombre(request.getParameter("nombre"));
             empleado.setDepartamento(request.getParameter("departamento"));
+            empleado.setPrecio(Integer.parseInt(request.getParameter("precio")));
+            empleado.setStock(Integer.parseInt(request.getParameter("stock")));
+            empleado.setVendidos(Integer.parseInt(request.getParameter("vendidos")));
+
             empleadoDAO.editar(empleado);
             System.out.println("Registro editado satisfactoriamente...");
             response.sendRedirect(request.getContextPath() + "/index.jsp");

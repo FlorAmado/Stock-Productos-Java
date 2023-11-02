@@ -10,8 +10,8 @@
     </head>
     <body>
         <div class="container mt-5">
-            <a class="btn btn-warning" href="EmpleadoController?opcion=crear">Crear un Producto</a>
-            <h1 class="text-center text-warning">Lista de Productos</h1>
+            <a class="btn btn-success" href="EmpleadoController?opcion=crear">Crear un Producto</a>
+            <h1 class="text-center text-success">Lista de Productos</h1>
             <table border="1" class="table table-bordered table-striped mt-3">
                 <tr>
                     <td>Codigo</td>
@@ -38,10 +38,10 @@
 
                         
                         <td class="text-center">
-                            <a class="btn btn-outline-dark" href="EmpleadoController?opcion=editar&id=<c:out value="${empleado.id}"></c:out>">
+                            <a class="btn btn-outline-dark" href="EmpleadoController?opcion=destacar&id=<c:out value="${empleado.id}"></c:out>">
                                 Destacar
                             </a>
-                            <a class="btn btn-warning" href="EmpleadoController?opcion=editar&id=<c:out value="${empleado.id}"></c:out>">
+                            <a class="btn btn-primary" href="EmpleadoController?opcion=editar&id=<c:out value="${empleado.id}"></c:out>">
                                 Editar
                             </a>
                             <a class="btn btn-danger" href="EmpleadoController?opcion=eliminar&id=<c:out value="${empleado.id}"></c:out>">
