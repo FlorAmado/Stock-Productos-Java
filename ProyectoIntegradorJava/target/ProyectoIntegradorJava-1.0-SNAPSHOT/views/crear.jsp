@@ -9,6 +9,8 @@
         <h1 class="text-center text-success">Crear Producto</h1>
         <form action="EmpleadoController" method="post">
             <input type="hidden" name="opcion" value="guardar">
+            <a href="/ProyectoIntegradorJava/index.jsp" class="btn btn-outline-secondary">? Inicio</a>
+
             <table class="table table-bordered mt-3">
                 <tr>
                     <td>Producto:</td>

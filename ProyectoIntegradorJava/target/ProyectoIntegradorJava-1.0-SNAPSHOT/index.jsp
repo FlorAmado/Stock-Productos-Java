@@ -14,7 +14,7 @@
             
               <a class="btn btn-success" href="EmpleadoController?opcion=listar">Lista de Productos</a>
               
-              <a class="btn btn-success" href="EmpleadoController?opcion=listar">Lista de Destacados</a>
+              <a class="btn btn-success" href="EmpleadoController?opcion=destacar">Lista de Destacados</a>
             
               </div>  
     </div>

@@ -12,6 +12,7 @@
 <body>
     <div class="container mt-5">
         <h1 class="text-center text-success">Editar Producto</h1>
+        <a href="/ProyectoIntegradorJava/index.jsp" class="btn btn-outline-secondary">← Inicio</a>
         <form action="EmpleadoController" method="post">
             <c:set var="empleado" value="${empleado}"></c:set>
             <input type="hidden" name="opcion" value="editar">

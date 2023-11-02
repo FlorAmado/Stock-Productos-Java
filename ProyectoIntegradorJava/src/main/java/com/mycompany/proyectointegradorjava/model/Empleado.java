@@ -7,6 +7,8 @@ private String departamento;
 private int precio;
 private int stock;
 private int vendidos;
+private boolean destacado;
+
 
    public Empleado() {
     }
@@ -62,5 +64,13 @@ private int vendidos;
     @Override
     public String toString() {
         return "Empleado{" + "id=" + id + ", nombre=" + nombre + ", departamento=" + departamento + ", precio=" + precio + ", stock=" + stock + ", vendidos=" + vendidos + '}';
+    }
+
+    public boolean isDestacado() {
+        return destacado;
+    }
+
+    public void setDestacado(boolean destacado) {
+        this.destacado = destacado;
     }
 }

@@ -188,4 +188,9 @@ public class EmpleadoDAOImpl implements EmpleadoDAO {
 
         return empleado;
     }
+
+    @Override
+    public boolean destacar(Empleado empld) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 }

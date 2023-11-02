@@ -7,6 +7,8 @@ public interface EmpleadoDAO {
 boolean guardar(Empleado empleado);
 // editar empleado
 boolean editar(Empleado empleado);
+// destacar empleado
+boolean destacar(Empleado empleado);
 // eliminar empleados
 boolean eliminar(int idEmpleado);
 // obtener lista de empleados

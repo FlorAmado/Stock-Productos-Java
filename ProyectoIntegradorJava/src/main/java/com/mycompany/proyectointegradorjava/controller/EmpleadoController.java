@@ -11,12 +11,14 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 @WebServlet(name = "EmpleadoController", urlPatterns = {"/EmpleadoController"})
 public class EmpleadoController extends HttpServlet {
 
     private EmpleadoDAO empleadoDAO;
+    private List<Empleado> destacado = new ArrayList<>(); // Lista de productos destacados
 
     @Override
     public void init() throws ServletException {
@@ -61,14 +63,24 @@ public class EmpleadoController extends HttpServlet {
                     response.sendRedirect(request.getContextPath() + "/index.jsp");
                     break;
                 }
-            /*case "destacar":
+            case "destacar":
                 {
                     int id = Integer.parseInt(request.getParameter("id"));
-                    empleadoDAO.destacar(id);
-                    System.out.println("Registro destacado satisfactoriamente...");
+                    Empleado emp = empleadoDAO.obtenerEmpleado(id);
+
+                    if (emp != null) {
+                        emp.setDestacado(emp.isDestacado()); // Cambiar el estado de destacado
+                        if (emp.isDestacado()) {
+                            destacado.remove(emp); // Quitar de la lista de destacados
+                        } else {
+                            destacado.add(emp); // Agregar a la lista de destacados
+                        }
+                    }
+
+                    empleadoDAO.destacar(emp); // Guardar el cambio en la base de datos
                     response.sendRedirect(request.getContextPath() + "/index.jsp");
                     break;
-                }*/
+                }
             default:
                 break;
         }
