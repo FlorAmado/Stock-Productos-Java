@@ -73,4 +73,5 @@ private boolean destacado;
     public void setDestacado(boolean destacado) {
         this.destacado = destacado;
     }
+
 }

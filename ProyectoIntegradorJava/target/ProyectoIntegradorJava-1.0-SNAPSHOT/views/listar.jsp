@@ -13,7 +13,8 @@
         <div class="container mt-5">
             <a href="/ProyectoIntegradorJava/index.jsp" class="btn btn-outline-secondary"><i class="fa-solid fa-house"></i> Inicio</a>
             <a class="btn btn-success" href="EmpleadoController?opcion=crear"> <i class="fa-solid fa-plus"></i> Crear un Producto</a>
-            <h1 class="text-center text-success">Lista de Productos</h1>
+            
+            <h1 class="text-center text-success animate__backInDown">Lista de Productos</h1>
             <table border="1" class="table table-bordered table-striped mt-3">
                 <tr>
                     <td>Codigo</td>

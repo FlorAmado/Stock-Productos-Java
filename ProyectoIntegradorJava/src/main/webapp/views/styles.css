@@ -1,0 +1,15 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : 03/11/2023, 19:35:50
+    Author     : estudiante
+*/
+
+.body-index {
+    background-image: url('./images/giphy.gif');
+    background-size: cover; /* Para ajustar la imagen al tamaño de la ventana del navegador */
+    background-repeat: no-repeat; /* Para evitar la repetición de la imagen de fondo */
+    /* Otras propiedades de estilo si las necesitas */
+}

@@ -73,7 +73,7 @@ public class EmpleadoController extends HttpServlet {
                             destacado.add(emp);
                         }
                     }
-                
+
                     empleadoDAO.destacar(emp);
                     RequestDispatcher requestDispatcher = request.getRequestDispatcher("/views/destacar.jsp");
                     requestDispatcher.forward(request, response);
@@ -96,9 +96,13 @@ public class EmpleadoController extends HttpServlet {
             Empleado empleado = new Empleado();
             empleado.setNombre(request.getParameter("nombre"));
             empleado.setDepartamento(request.getParameter("departamento"));
+            empleado.setPrecio(Integer.parseInt(request.getParameter("precio")));
+            empleado.setStock(Integer.parseInt(request.getParameter("stock")));
+            empleado.setVendidos(Integer.parseInt(request.getParameter("vendidos")));
             empleadoDAO.guardar(empleado);
             System.out.println("Registro guardado satisfactoriamente...");
             response.sendRedirect(request.getContextPath() + "/index.jsp");
+
         } else if (opcion.equals("editar")) {
             Empleado empleado = new Empleado();
             empleado.setId(Integer.parseInt(request.getParameter("id")));
@@ -111,6 +115,29 @@ public class EmpleadoController extends HttpServlet {
             empleadoDAO.editar(empleado);
             System.out.println("Registro editado satisfactoriamente...");
             response.sendRedirect(request.getContextPath() + "/index.jsp");
+        } else if (opcion.equals("destacar")) {
+            String idParam = request.getParameter("id");
+            String destacadoParam = request.getParameter("destacado");
+
+            if (idParam != null && destacadoParam != null) {
+                int id = Integer.parseInt(idParam);
+                boolean destacados = Boolean.parseBoolean(destacadoParam);
+
+                Empleado empleado = empleadoDAO.obtenerEmpleado(id);
+
+                if (empleado != null) {
+                    empleado.setDestacado(destacados);
+                    empleadoDAO.editar(empleado);
+                    System.out.println("Registro destacado/desmarcado satisfactoriamente...");
+                } else {
+                    System.out.println("Empleado no encontrado.");
+                }
+            } else {
+                System.out.println("Faltan parámetros necesarios.");
+            }
+
+            response.sendRedirect(request.getContextPath() + "/index.jsp");
         }
+
     }
 }
