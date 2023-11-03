@@ -190,7 +190,30 @@ public class EmpleadoDAOImpl implements EmpleadoDAO {
     }
 
     @Override
-    public boolean destacar(Empleado empld) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public boolean destacar(Empleado empleado) {
+    
+    String sql = null;
+    estadoOperacion = false;
+    try {
+        connection = obtenerConexion();
+        connection.setAutoCommit(false);
+        sql = "UPDATE empleados SET destacado=? WHERE id=?";
+        statement = connection.prepareStatement(sql);
+        statement.setBoolean(1, !empleado.isDestacado());
+        statement.setInt(2, empleado.getId());
+        estadoOperacion = statement.executeUpdate() > 0;
+        connection.commit();
+        statement.close();
+        connection.close();
+    } catch (SQLException e) {
+        try {
+            connection.rollback();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        e.printStackTrace();
+    }
+    return estadoOperacion;    
+    
     }
 }

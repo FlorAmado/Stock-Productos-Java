@@ -32,55 +32,56 @@ public class EmpleadoController extends HttpServlet {
         String opcion = request.getParameter("opcion");
 
         switch (opcion) {
-            case "crear":
-                {
-                    RequestDispatcher requestDispatcher = request.getRequestDispatcher("/views/crear.jsp");
-                    requestDispatcher.forward(request, response);
-                    break;
-                }
-            case "listar":
-                {
-                    List<Empleado> lista = empleadoDAO.obtenerEmpleados();
-                    request.setAttribute("lista", lista);
-                    RequestDispatcher requestDispatcher = request.getRequestDispatcher("/views/listar.jsp");
-                    requestDispatcher.forward(request, response);
-                    break;
-                }
-            case "editar":
-                {
-                    int id = Integer.parseInt(request.getParameter("id"));
-                    Empleado emp = empleadoDAO.obtenerEmpleado(id);
-                    request.setAttribute("empleado", emp);
-                    RequestDispatcher requestDispatcher = request.getRequestDispatcher("/views/editar.jsp");
-                    requestDispatcher.forward(request, response);
-                    break;
-                }
-            case "eliminar":
-                {
-                    int id = Integer.parseInt(request.getParameter("id"));
-                    empleadoDAO.eliminar(id);
-                    System.out.println("Registro eliminado satisfactoriamente...");
-                    response.sendRedirect(request.getContextPath() + "/index.jsp");
-                    break;
-                }
-            case "destacar":
-                {
-                    int id = Integer.parseInt(request.getParameter("id"));
+            case "crear": {
+                RequestDispatcher requestDispatcher = request.getRequestDispatcher("/views/crear.jsp");
+                requestDispatcher.forward(request, response);
+                break;
+            }
+            case "listar": {
+                List<Empleado> lista = empleadoDAO.obtenerEmpleados();
+                request.setAttribute("lista", lista);
+                RequestDispatcher requestDispatcher = request.getRequestDispatcher("/views/listar.jsp");
+                requestDispatcher.forward(request, response);
+                break;
+            }
+            case "editar": {
+                int id = Integer.parseInt(request.getParameter("id"));
+                Empleado emp = empleadoDAO.obtenerEmpleado(id);
+                request.setAttribute("empleado", emp);
+                RequestDispatcher requestDispatcher = request.getRequestDispatcher("/views/editar.jsp");
+                requestDispatcher.forward(request, response);
+                break;
+            }
+            case "eliminar": {
+                int id = Integer.parseInt(request.getParameter("id"));
+                empleadoDAO.eliminar(id);
+                System.out.println("Registro eliminado satisfactoriamente...");
+                response.sendRedirect(request.getContextPath() + "/index.jsp");
+                break;
+            }
+            case "destacar": {
+                String idParam = request.getParameter("id");
+                if (idParam != null) {
+                    int id = Integer.parseInt(idParam);
                     Empleado emp = empleadoDAO.obtenerEmpleado(id);
 
                     if (emp != null) {
-                        emp.setDestacado(emp.isDestacado()); // Cambiar el estado de destacado
+                        emp.setDestacado(!emp.isDestacado());
                         if (emp.isDestacado()) {
-                            destacado.remove(emp); // Quitar de la lista de destacados
+                            destacado.remove(emp);
                         } else {
-                            destacado.add(emp); // Agregar a la lista de destacados
+                            destacado.add(emp);
                         }
                     }
-
-                    empleadoDAO.destacar(emp); // Guardar el cambio en la base de datos
-                    response.sendRedirect(request.getContextPath() + "/index.jsp");
-                    break;
+                
+                    empleadoDAO.destacar(emp);
+                    RequestDispatcher requestDispatcher = request.getRequestDispatcher("/views/destacar.jsp");
+                    requestDispatcher.forward(request, response);
                 }
+
+                break;
+            }
+
             default:
                 break;
         }
@@ -111,5 +112,5 @@ public class EmpleadoController extends HttpServlet {
             System.out.println("Registro editado satisfactoriamente...");
             response.sendRedirect(request.getContextPath() + "/index.jsp");
         }
-  }
+    }
 }
