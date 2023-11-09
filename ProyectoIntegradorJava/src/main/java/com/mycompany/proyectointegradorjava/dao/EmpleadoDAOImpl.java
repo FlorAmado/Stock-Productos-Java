@@ -189,7 +189,7 @@ public class EmpleadoDAOImpl implements EmpleadoDAO {
         return empleado;
     }
 
-    @Override
+   /* @Override
     public boolean destacar(Empleado empleado) {
     
     String sql = null;
@@ -215,5 +215,5 @@ public class EmpleadoDAOImpl implements EmpleadoDAO {
     }
     return estadoOperacion;    
     
-    }
+    }*/
 }

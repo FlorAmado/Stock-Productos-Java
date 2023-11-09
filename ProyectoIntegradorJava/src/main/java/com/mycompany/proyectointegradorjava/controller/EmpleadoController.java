@@ -11,14 +11,14 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.ArrayList;
+//import java.util.ArrayList;
 import java.util.List;
 
 @WebServlet(name = "EmpleadoController", urlPatterns = {"/EmpleadoController"})
 public class EmpleadoController extends HttpServlet {
 
     private EmpleadoDAO empleadoDAO;
-    private List<Empleado> destacado = new ArrayList<>(); // Lista de productos destacados
+    //private List<Empleado> destacado = new ArrayList<>(); // Lista de productos destacados
 
     @Override
     public void init() throws ServletException {
@@ -59,11 +59,12 @@ public class EmpleadoController extends HttpServlet {
                 response.sendRedirect(request.getContextPath() + "/index.jsp");
                 break;
             }
-            case "destacar": {
+           /* case "destacar": {
                 String idParam = request.getParameter("id");
                 if (idParam != null) {
                     int id = Integer.parseInt(idParam);
                     Empleado emp = empleadoDAO.obtenerEmpleado(id);
+                    List<Empleado> destacado = empleadoDAO.obtenerEmpleados();
 
                     if (emp != null) {
                         emp.setDestacado(!emp.isDestacado());
@@ -78,10 +79,8 @@ public class EmpleadoController extends HttpServlet {
                     RequestDispatcher requestDispatcher = request.getRequestDispatcher("/views/destacar.jsp");
                     requestDispatcher.forward(request, response);
                 }
-
                 break;
-            }
-
+            }*/
             default:
                 break;
         }
@@ -115,7 +114,7 @@ public class EmpleadoController extends HttpServlet {
             empleadoDAO.editar(empleado);
             System.out.println("Registro editado satisfactoriamente...");
             response.sendRedirect(request.getContextPath() + "/index.jsp");
-        } else if (opcion.equals("destacar")) {
+        }/* else if (opcion.equals("destacar")) {
             String idParam = request.getParameter("id");
             String destacadoParam = request.getParameter("destacado");
 
@@ -130,14 +129,14 @@ public class EmpleadoController extends HttpServlet {
                     empleadoDAO.editar(empleado);
                     System.out.println("Registro destacado/desmarcado satisfactoriamente...");
                 } else {
-                    System.out.println("Empleado no encontrado.");
+                    System.out.println("No encontrado.");
                 }
             } else {
                 System.out.println("Faltan parámetros necesarios.");
             }
 
             response.sendRedirect(request.getContextPath() + "/index.jsp");
-        }
+        }*/
 
     }
 }
